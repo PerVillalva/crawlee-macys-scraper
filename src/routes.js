@@ -87,13 +87,8 @@ router.addHandler("productDetail", async ({ request, $, log }) => {
   // Organize all the scraped data in a single object
   const results = {
     url: request.loadedUrl,
-    productBrand: productCharacteristics.productBrand,
-    productName: productCharacteristics.productName,
-    productRating: productCharacteristics.productRating,
-    discountedPrice: productPrice.discountedPrice,
-    originalPrice: productPrice.originalPrice,
-    availableSizes: productCharacteristics.availableSizes,
-    colorOptions: productCharacteristics.colorOptions,
+    ...productCharacteristics,
+    ...productPrice,
   };
 
   // Push the obtained data to the dataset
