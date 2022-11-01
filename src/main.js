@@ -1,17 +1,16 @@
-// For more information, see https://crawlee.dev/
-import { CheerioCrawler, ProxyConfiguration } from "crawlee";
+import { CheerioCrawler } from "crawlee";
 import { router } from "./routes.js";
+import { LABELS } from "./consts.js";
 
 const crawler = new CheerioCrawler({
-  // proxyConfiguration: new ProxyConfiguration({ proxyUrls: ['...'] }),
-  requestHandler: router,
+    requestHandler: router,
 });
 
 await crawler.addRequests([
-  {
-    url: "https://www.macys.com/shop/search/Pageindex/1?keyword=mens%20shoes",
-    label: "start",
-  },
+    {
+        url: "https://www.macys.com/shop/search/Pageindex/1?keyword=mens%20shoes",
+        label: LABELS.START,
+    },
 ]);
 
 await crawler.run();
